@@ -8,12 +8,12 @@ jsf.extend('faker', () =>
 
 async function mkdirSync(rootDir, dirName) {
   try {
+    fs.statSync(`${rootDir}/${dirName}`);
+  } 
+  catch(e) {
     fs.mkdirSync(`${rootDir}/${dirName}`);
-    return `${rootDir}/${dirName}`;
   }
-  catch (err) {
-    if (err.code !== 'EEXIST') throw err
-  }
+  return `${rootDir}/${dirName}`;
 }
 
 async function copySchema(schema, destDir) {

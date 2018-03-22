@@ -6,12 +6,22 @@ jsf.extend('faker', () =>
   require('faker'),
 );
 
-const mkdirSync = function (rootDir, dirName) {
+async function mkdirSync(rootDir, dirName) {
   try {
     fs.mkdirSync(`${rootDir}/${dirName}`);
     return `${rootDir}/${dirName}`;
-  } catch (err) {
+  }
+  catch (err) {
     if (err.code !== 'EEXIST') throw err
+  }
+}
+
+async function copySchema(schema, destDir) {
+  try {
+    return fs.writeFileSync(`${destDir}/schema.json`, JSON.stringify(schema, null, 2));
+  }
+  catch(err) {
+    throw new Error(err);
   }
 }
 
@@ -32,5 +42,6 @@ async function createJson(schema, destDir) {
 
 module.exports = {
   createJson: createJson,
-  mkdirSync: mkdirSync
+  mkdirSync: mkdirSync,
+  copySchema: copySchema
 }

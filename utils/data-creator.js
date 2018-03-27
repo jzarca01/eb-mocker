@@ -9,7 +9,7 @@ jsf.extend('faker', () =>
 async function mkdirSync(rootDir, dirName) {
   try {
     fs.statSync(`${rootDir}/${dirName}`);
-  } 
+  }
   catch(e) {
     fs.mkdirSync(`${rootDir}/${dirName}`);
   }

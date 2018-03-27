@@ -1,13 +1,13 @@
 {
   "name": "eb-mocker",
-  "version": "1.0.1",
-  "description": "",
+  "version": "1.0.2",
+  "description": "Creates mocked data and data types, at the root of the project directory, based on embedded json schema",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "node index.js"
   },
-  "author": "",
+  "author": "Jeremie Zarca",
   "license": "ISC",
   "dependencies": {
     "app-root-path": "^2.0.1",

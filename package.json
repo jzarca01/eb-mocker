@@ -1,7 +1,7 @@
 {
   "name": "eb-mocker",
-  "version": "1.0.2",
-  "description": "Creates mocked data and data types, at the root of the project directory, based on embedded json schema",
+  "version": "1.1.0",
+  "description": "Creates mocked data and data types, at the root of the project directory, based on eb-mocker-resources json schemas",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

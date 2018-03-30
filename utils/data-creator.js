@@ -18,7 +18,7 @@ async function mkdirSync(rootDir, dirName) {
 
 async function copySchema(schema, destDir) {
   try {
-    return fs.writeFileSync(`${destDir}/schema.json`, JSON.stringify(schema, null, 2));
+    return fs.writeFileSync(`${destDir}/${schema.title}.schema.json`, JSON.stringify(schema, null, 2));
   }
   catch(err) {
     throw new Error(err);
@@ -33,7 +33,7 @@ async function resolveSchema(schema) {
 async function createJson(schema, destDir) {
   try {
     const items = await resolveSchema(schema);
-    return fs.writeFileSync(`${destDir}/data.json`, JSON.stringify(items, null, 2));
+    return fs.writeFileSync(`${destDir}/${schema.title}.data.json`, JSON.stringify(items, null, 2));
   }
   catch(err) {
     throw new Error(err);

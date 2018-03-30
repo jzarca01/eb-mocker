@@ -2,18 +2,18 @@ const path = require('path')
 const appRoot = require('app-root-path');
 const { createJson, compileTypes, mkdirSync, copySchema } = require('./utils')
 
-const metadata = require('./resources/metadata.json');
+const jsonSchemas = require('eb-mocker-resources');
 
-async function init (){
+async function init (schema){
     try {
         const destDir = await mkdirSync(appRoot, 'eb-mocker');
-        await copySchema(metadata, destDir);
-        await createJson(metadata, destDir);
-        await compileTypes(path.resolve(__dirname, './resources/metadata.json'), destDir)
+        await copySchema(schema, destDir);
+        await createJson(schema, destDir);
+        await compileTypes(schema, destDir)
     }
     catch(err) {
         throw new Error(err);
     }
 }
 
-init();
+Object.keys(jsonSchemas).map(jsonSchema => init(jsonSchemas[jsonSchema]));
